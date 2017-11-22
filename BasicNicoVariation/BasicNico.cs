@@ -4,7 +4,7 @@
     {
         public static string Encrypt(string key, string message)
         {
-            return key;
+            return message;
         }
     }
 }

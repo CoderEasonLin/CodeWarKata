@@ -11,6 +11,7 @@ namespace BasicNicoVariation
         [TestCase("cba", "cba", "abc")]
         [TestCase("key", "key", "eky")]
         [TestCase("abc", "abcdef", "abcdef")]
+        [TestCase("abc", "abcd", "abcd  ")]
         public void BasicNicoVariationTest(string key, string message, string expected)
         {
             Assert.AreEqual(expected, BasicNico.Encrypt(key, message));

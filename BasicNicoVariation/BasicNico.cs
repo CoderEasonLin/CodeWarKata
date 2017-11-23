@@ -27,7 +27,8 @@ namespace BasicNicoVariation
 
         private static int GetEncryptedCharIndex(int i)
         {
-            return _key.IndexOf(_sortedKey.ElementAt(i % _sortedKey.Count()));
+            var processedLength = i - (i % _sortedKey.Count());
+            return _key.IndexOf(_sortedKey.ElementAt(i % _sortedKey.Count())) + processedLength;
         }
     }
 }

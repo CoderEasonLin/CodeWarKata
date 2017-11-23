@@ -17,6 +17,9 @@ namespace BasicNicoVariation
                 result += message[charPos];
             }
 
+            if(message.Length % key.Length != 0)
+                result = result.PadRight(message.Length + key.Length - message.Length % key.Length);
+
             return result;
         }
     }

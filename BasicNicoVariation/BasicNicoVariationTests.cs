@@ -5,7 +5,6 @@ namespace BasicNicoVariation
     [TestFixture]
     public class BasicNicoVariationTests
     {
-        [TestCase("", "", "")]
         [TestCase("abc", "abc", "abc")]
         [TestCase("abc", "cba", "cba")]
         [TestCase("cba", "cba", "abc")]

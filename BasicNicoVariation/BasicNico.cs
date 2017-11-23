@@ -1,16 +1,18 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace BasicNicoVariation
 {
     public class BasicNico
     {
-        private static string _key;
-        private static IOrderedEnumerable<char> _sortedKey;
+        private Dictionary<int, int> _indexMapping;
+        private string _key;
 
         public BasicNico(string key)
         {
             _key = key;
-            _sortedKey = key.ToCharArray().OrderBy(x => x);
+            var sortedKey = string.Concat(key.OrderBy(x => x));
+            _indexMapping = key.ToDictionary(c => key.IndexOf(c), c => sortedKey.IndexOf(c));
         }
 
         public string Encrypt(string message)
@@ -25,10 +27,9 @@ namespace BasicNicoVariation
             return result;
         }
 
-        private static int GetEncryptedCharIndex(int i)
+        private int GetEncryptedCharIndex(int messageIndex)
         {
-            var processedLength = i - (i % _sortedKey.Count());
-            return _key.IndexOf(_sortedKey.ElementAt(i % _sortedKey.Count())) + processedLength;
+            return messageIndex - messageIndex % _key.Length + _indexMapping[messageIndex % _key.Length];
         }
     }
 }

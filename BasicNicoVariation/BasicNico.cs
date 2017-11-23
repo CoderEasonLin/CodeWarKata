@@ -4,17 +4,30 @@ namespace BasicNicoVariation
 {
     public class BasicNico
     {
-        public static string Encrypt(string key, string message)
+        private static string _key;
+        private static IOrderedEnumerable<char> _sortedKey;
+
+        public BasicNico(string key)
         {
-            var sortedKey = key.ToCharArray().OrderBy(x => x);
+            _key = key;
+            _sortedKey = key.ToCharArray().OrderBy(x => x);
+        }
+
+        public string Encrypt(string message)
+        {
             var result = "";
             for (int i = 0; i < message.Length; i++)
             {
-                var charPos = key.IndexOf(sortedKey.ElementAt(i % sortedKey.Count()));
+                var charPos = GetEncryptedCharIndex(i);
                 result += message[charPos];
             }
 
             return result;
+        }
+
+        private static int GetEncryptedCharIndex(int i)
+        {
+            return _key.IndexOf(_sortedKey.ElementAt(i % _sortedKey.Count()));
         }
     }
 }

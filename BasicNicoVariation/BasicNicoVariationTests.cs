@@ -10,7 +10,7 @@ namespace BasicNicoVariation
         [TestCase("abc", "cba", "cba")]
         [TestCase("cba", "cba", "abc")]
         [TestCase("key", "key", "eky")]
-        [TestCase("abc", "abcd", "abcd  ")]
+        [TestCase("abc", "abcdef", "abcdef")]
         public void BasicNicoVariationTest(string key, string message, string expected)
         {
             var basicNico = new BasicNico(key);

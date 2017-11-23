@@ -8,6 +8,7 @@ namespace BasicNicoVariation
         [TestCase("", "", "")]
         [TestCase("abc", "abc", "abc")]
         [TestCase("abc", "cba", "cba")]
+        [TestCase("cba", "cba", "abc")]
         public void BasicNicoVariationTest(string key, string message, string expected)
         {
             Assert.AreEqual(expected, BasicNico.Encrypt(key, message));

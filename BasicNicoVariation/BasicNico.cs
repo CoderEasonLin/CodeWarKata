@@ -7,7 +7,10 @@ namespace BasicNicoVariation
         public static string Encrypt(string key, string message)
         {
             var sortedKey = string.Concat(key.OrderBy(x => x));
-            var encryptedIndex = key.ToDictionary(c => key.IndexOf(c), c => sortedKey.IndexOf(c));
+            var encryptedIndex = key.ToDictionary(c => sortedKey.IndexOf(c), c => key.IndexOf(c));
+
+            if(message.Length % key.Length > 0)
+                message = message.PadRight(message.Length + key.Length - message.Length % key.Length);
 
             var result = "";
             for (int i = 0; i < message.Length; i++)
@@ -16,9 +19,6 @@ namespace BasicNicoVariation
                 var charPos = i - indexOfKey + encryptedIndex[indexOfKey];
                 result += message[charPos];
             }
-
-            if(message.Length % key.Length != 0)
-                result = result.PadRight(message.Length + key.Length - message.Length % key.Length);
 
             return result;
         }

@@ -13,8 +13,7 @@ namespace BasicNicoVariation
         [TestCase("abc", "abcdef", "abcdef")]
         public void BasicNicoVariationTest(string key, string message, string expected)
         {
-            var basicNico = new BasicNico(key);
-            Assert.AreEqual(expected, basicNico.Encrypt(message));
+            Assert.AreEqual(expected, BasicNico.Encrypt(key, message));
         }
     }
 }

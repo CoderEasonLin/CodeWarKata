@@ -9,6 +9,7 @@ namespace NextBiggerNumber
         [TestCase(12, 21)]
         [TestCase(513, 531)]
         [TestCase(2017, 2071)]
+        [TestCase(20170, 20701)]
         public void NextBiggerNumberTest(int input, int expected)
         {
             Assert.AreEqual(expected, NextBiggerNumber.By(input));

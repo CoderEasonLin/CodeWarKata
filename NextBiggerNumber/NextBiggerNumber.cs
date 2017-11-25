@@ -13,6 +13,7 @@ namespace NextBiggerNumber
                 if (digits[i - 1] < digits[i])
                 {
                     Swap(digits, i - 1, i);
+                    Array.Sort(digits, i, digits.Length - i);
                     break;
                 }
             }

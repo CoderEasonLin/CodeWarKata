@@ -15,9 +15,9 @@ namespace BasicNicoVariation
             var result = "";
             for (int i = 0; i < message.Length; i++)
             {
-                var indexOfKey = i % key.Length;
-                var charPos = i - indexOfKey + encryptedIndex[indexOfKey];
-                result += message[charPos];
+                var indexFromKeyLength = i % key.Length;
+                var encryptedCharIndex = i - indexFromKeyLength + encryptedIndex[indexFromKeyLength];
+                result += message[encryptedCharIndex];
             }
 
             return result;

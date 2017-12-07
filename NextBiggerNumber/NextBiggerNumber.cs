@@ -24,6 +24,12 @@ namespace NextBiggerNumber
 
         private static int NextBiggerDigitIndex(int[] digits, int startFrom, int value)
         {
+            
+            var tempDigits = digits.ToList().GetRange(startFrom, digits.Length).OrderByDescending(i => i).ToList();
+            var index = tempDigits.IndexOf(value);
+            return digits.
+
+
             var result = -1;
             var biggerDigit = 10;
             for (int i = startFrom; i < digits.Length; i++)

@@ -1,17 +1,41 @@
-﻿namespace BingoCard
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography;
+using NUnit.Framework.Constraints;
+
+namespace BingoCard
 {
     public class BingoCard
     {
         public static string[] GetCard()
         {
-            return new string[24]
+            var BNumbers = NumberGenerator.Generate(min: 1, max: 15, count: 5);
+            var INumbers = NumberGenerator.Generate(min: 1, max: 15, count: 5);
+            var NNumbers = NumberGenerator.Generate(min: 1, max: 15, count: 4);
+            var GNumbers = NumberGenerator.Generate(min: 1, max: 15, count: 5);
+            var ONumbers = NumberGenerator.Generate(min: 1, max: 15, count: 5);
+            return BNumbers.Select(x => "B" + x.ToString()).Concat(
+                   INumbers.Select(x => "I" + x.ToString()).Concat(
+                   NNumbers.Select(x => "N" + x.ToString()).Concat(
+                   GNumbers.Select(x => "G" + x.ToString()).Concat(
+                   ONumbers.Select(x => "O" + x.ToString()))))).ToArray();
+        }
+    }
+
+    public class NumberGenerator
+    {
+        public static List<int> Generate(int min, int max, int count)
+        {
+            var result = new List<int>();
+            var random = new Random();
+            while(result.Count < count)
             {
-                "B1", "B2", "B3", "B4", "B5",
-                "I6", "I7", "I8", "I9", "I10",
-                "N11", "N12", "N13", "N14",
-                "G15", "G16", "G17", "G18", "G19",
-                "O20", "O21", "O22", "O23", "O24"
-            };
+                var number = random.Next(min, max);
+                if (!result.Contains(number))
+                    result.Add(number);
+            }
+            return result;
         }
     }
 }

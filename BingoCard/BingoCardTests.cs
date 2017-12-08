@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Text.RegularExpressions;
 using NUnit.Framework;
 
 namespace BingoCard
@@ -28,6 +29,15 @@ namespace BingoCard
         {
             var numbers = BingoCard.GetCard().Where(x => x.StartsWith(column)).ToList();
             Assert.AreEqual(count, numbers.Count);
+        }
+
+        [Test]
+        public void NumbersAreOrderedByColumn()
+        {
+            var columns = string.Join("", BingoCard.GetCard().ToList()
+                .Select(x => x.Substring(0, 1)).ToArray());
+
+            Assert.IsTrue(Regex.IsMatch(columns, "^[B]*[I]*[N]*[G]*[O]*$"));
         }
     }
 }

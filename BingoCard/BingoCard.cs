@@ -10,7 +10,10 @@ namespace BingoCard
         {
             return GenerateNumbers(startWith: "B", count: 5)
                 .Concat(GenerateNumbers(startWith: "I", count: 5)
-                .Concat(GenerateNumbers(startWith: "", count: 14))).ToArray();
+                .Concat(GenerateNumbers(startWith: "N", count: 4)
+                .Concat(GenerateNumbers(startWith: "G", count: 5)
+                .Concat(GenerateNumbers(startWith: "O", count: 5)
+                )))).ToArray();
         }
 
         private static HashSet<string> GenerateNumbers(string startWith, int count)

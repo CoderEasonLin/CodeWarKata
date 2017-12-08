@@ -22,7 +22,7 @@ namespace BingoCard
         }
 
         [TestCase("B", 5)]
-        //[TestCase("I", 5)]
+        [TestCase("I", 5)]
         //[TestCase("N", 4)]
         //[TestCase("G", 5)]
         //[TestCase("O", 5)]

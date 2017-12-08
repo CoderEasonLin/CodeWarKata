@@ -14,12 +14,12 @@ namespace BingoCard
             Assert.AreEqual(24, BingoCard.GetCard().Length);
         }
 
-        //[Test]
-        //public void EachNumberOnCardIsUnique()
-        //{
-        //    var card = BingoCard.GetCard();
-        //    Assert.AreEqual(card.Length, card.ToList().Distinct().Count());
-        //}
+        [Test]
+        public void EachNumberOnCardIsUnique()
+        {
+            var card = BingoCard.GetCard();
+            Assert.AreEqual(card.Length, card.ToList().Distinct().Count());
+        }
 
         //[TestCase("B", 5)]
         //[TestCase("I", 5)]

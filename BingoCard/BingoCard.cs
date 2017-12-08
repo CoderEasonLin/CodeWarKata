@@ -8,7 +8,13 @@ namespace BingoCard
     {
         public static string[] GetCard()
         {
-            return new string[24];
+            var set = new HashSet<string>();
+            var random = new Random();
+            while (set.Count < 24)
+            {
+                set.Add(random.Next(1000).ToString());
+            }
+            return set.ToArray();
         }
     }
 

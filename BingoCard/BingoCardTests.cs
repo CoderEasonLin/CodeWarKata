@@ -58,22 +58,22 @@ namespace BingoCard
             }
         }
 
-        //[Test]
-        //public void NumbersWithinColumnAreInRandomOrder()
-        //{
-        //    var card = BingoCard.GetCard().Select(x => Convert.ToInt32(x.Substring(1))).ToArray();
+        [Test]
+        public void NumbersWithinColumnAreInRandomOrder()
+        {
+            var card = BingoCard.GetCard().Select(x => Convert.ToInt32(x.Substring(1))).ToArray();
 
-        //    var isRandom = false;
-        //    for (var i = 1; i < card.Length; i++)
-        //    {
-        //        if (card[i - 1] > card[i])
-        //        {
-        //            isRandom = true;
-        //            break;
-        //        }
-        //    }
+            var isRandom = false;
+            for (var i = 1; i < card.Length; i++)
+            {
+                if (card[i - 1] > card[i])
+                {
+                    isRandom = true;
+                    break;
+                }
+            }
 
-        //    Assert.IsTrue(isRandom, "Unlikely result, is the list ordered?");
-        //}
+            Assert.IsTrue(isRandom, "Unlikely result, is the list ordered?");
+        }
     }
 }

@@ -19,12 +19,12 @@ namespace BingoCard
         private static HashSet<string> GenerateNumbers(string startWith, int count, int min, int max)
         {
             var random = new Random();
-            var hashSet = new HashSet<string>();
-            while (hashSet.Count < count)
+            var numbers = new HashSet<string>();
+            while (numbers.Count < count)
             {
-                hashSet.Add($"{startWith}{random.Next(min, max)}");
+                numbers.Add($"{startWith}{random.Next(min, max)}");
             }
-            return hashSet;
+            return numbers;
         }
     }
 }

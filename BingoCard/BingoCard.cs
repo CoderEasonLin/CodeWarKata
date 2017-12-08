@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using NUnit.Framework.Constraints;
 
 namespace BingoCard
 {
@@ -8,13 +9,19 @@ namespace BingoCard
     {
         public static string[] GetCard()
         {
-            var set = new HashSet<string>();
+            return GenerateNumbers(startWith: "B", count: 5)
+                .Concat(GenerateNumbers(startWith: "", count: 19)).ToArray();
+        }
+
+        private static HashSet<string> GenerateNumbers(string startWith, int count)
+        {
             var random = new Random();
-            while (set.Count < 24)
+            var hashSet = new HashSet<string>();
+            while (hashSet.Count < count)
             {
-                set.Add(random.Next(1000).ToString());
+                hashSet.Add($"{startWith}{random.Next(1000)}");
             }
-            return set.ToArray();
+            return hashSet;
         }
     }
 

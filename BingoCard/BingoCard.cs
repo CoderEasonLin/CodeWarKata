@@ -27,5 +27,4 @@ namespace BingoCard
             return hashSet;
         }
     }
-
 }

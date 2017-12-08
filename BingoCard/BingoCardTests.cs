@@ -32,14 +32,14 @@ namespace BingoCard
             Assert.AreEqual(count, numbers.Count);
         }
 
-        //[Test]
-        //public void NumbersAreOrderedByColumn()
-        //{
-        //    var columns = string.Join("", BingoCard.GetCard().ToList()
-        //        .Select(x => x.Substring(0, 1)).ToArray());
+        [Test]
+        public void NumbersAreOrderedByColumn()
+        {
+            var columns = string.Join("", BingoCard.GetCard().ToList()
+                .Select(x => x.Substring(0, 1)).ToArray());
 
-        //    Assert.IsTrue(Regex.IsMatch(columns, "^[B]*[I]*[N]*[G]*[O]*$"));
-        //}
+            Assert.IsTrue(Regex.IsMatch(columns, "^[B]*[I]*[N]*[G]*[O]*$"));
+        }
 
         //[TestCase("B", 1, 15)]
         //[TestCase("I", 16, 30)]

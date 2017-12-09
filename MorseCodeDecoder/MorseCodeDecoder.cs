@@ -8,7 +8,6 @@ public class MorseCodeDecoder
 
     public static string Decode(string input)
     {
-        Console.WriteLine(input);
         _morseCodeMapping = new Dictionary<string, string>
         {
             {".- ", "A"},

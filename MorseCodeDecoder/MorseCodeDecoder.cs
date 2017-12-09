@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 public class MorseCodeDecoder
@@ -7,6 +8,7 @@ public class MorseCodeDecoder
 
     public static string Decode(string input)
     {
+        Console.WriteLine(input);
         _morseCodeMapping = new Dictionary<string, string>
         {
             {".- ", "A"},
@@ -45,8 +47,10 @@ public class MorseCodeDecoder
             {"---.. ", "8"},
             {"----. ", "9"},
             {"----- ", "0"},
+            {"...---... ", "SOS"},
             {"  ", " "},
         };
+        
         input = $"{input} ";
         foreach (var mapping in _morseCodeMapping.OrderByDescending(pair => pair.Key))
         {

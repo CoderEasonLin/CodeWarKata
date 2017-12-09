@@ -14,18 +14,17 @@ namespace NextBiggerNumber
 
             var swapIndex = FindSwapIndex();
 
-            var NotExistedIndex = -1;
-            if (swapIndex == NotExistedIndex)
+            var NotExisted = -1;
+            if (swapIndex == NotExisted)
                 return -1;
 
-            var biggerIndex = FindIndexBeforeAndBiggerThan(swapIndex);
-            Swap(swapIndex, biggerIndex);
-            SortBefore(swapIndex);
+            Swap(swapIndex, FindBiggerDigitIndexAfter(swapIndex));
+            SortAfter(swapIndex);
 
             return Convert.ToInt64(string.Concat(_digits));
         }
 
-        private static void SortBefore(int index)
+        private static void SortAfter(int index)
         {
             var startIndex = index + 1;
             Array.Sort(_digits, startIndex, _digits.Length - startIndex);
@@ -38,16 +37,17 @@ namespace NextBiggerNumber
             _digits[index2] = temp;
         }
 
-        private static int FindIndexBeforeAndBiggerThan(int index)
+        private static int FindBiggerDigitIndexAfter(int index)
         {
+            var seed = _digits[index];
+
             var result = -1;
-            var nextBiggerNumber = 10;
-            var compareNumber = _digits[index];
+            var biggerDigit = 10;
             for (var i = index + 1; i < _digits.Length; i++)
             {
-                if (_digits[i] > compareNumber && _digits[i] < nextBiggerNumber)
+                if (_digits[i] > seed && _digits[i] < biggerDigit)
                 {
-                    nextBiggerNumber = _digits[i];
+                    biggerDigit = _digits[i];
                     result = i;
                 }
             }

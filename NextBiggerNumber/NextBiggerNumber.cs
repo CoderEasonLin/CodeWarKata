@@ -1,53 +1,72 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 
 namespace NextBiggerNumber
 {
     public class NextBiggerNumber
     {
+        private static int[] _digits;
+
         public static long By(long number)
         {
-            var digits = number.ToString().Select(x => Convert.ToInt32(x.ToString())).ToArray();
-            for (int i = digits.Length - 1; i > 0; i--)
-            {
-                if (digits[i - 1] < digits[i])
-                {
-                    var nextBiggerDigitIndex = NextBiggerDigitIndex(digits, i, digits[i-1]);
-                    Swap(digits, i - 1, nextBiggerDigitIndex == -1 ? i : nextBiggerDigitIndex);
-                    Array.Sort(digits, i, digits.Length - i);
-                    break;
-                }
-            }
-            var result = Convert.ToInt64(string.Concat(digits));
-            return number == result ? -1 : result;
+            ToDigitsArray(number);
+
+            var swapIndex = FindSwapIndex();
+
+            var NotExistedIndex = -1;
+            if (swapIndex == NotExistedIndex)
+                return -1;
+
+            var biggerIndex = FindIndexBeforeAndBiggerThan(swapIndex);
+            Swap(swapIndex, biggerIndex);
+            SortBefore(swapIndex);
+
+            return Convert.ToInt64(string.Concat(_digits));
         }
 
-        private static int NextBiggerDigitIndex(int[] digits, int startFrom, int value)
+        private static void SortBefore(int index)
         {
-            
-            var tempDigits = digits.ToList().GetRange(startFrom, digits.Length).OrderByDescending(i => i).ToList();
-            var index = tempDigits.IndexOf(value);
-            return digits.
+            var startIndex = index + 1;
+            Array.Sort(_digits, startIndex, _digits.Length - startIndex);
+        }
 
+        private static void Swap(int index1, int index2)
+        {
+            int temp = _digits[index1];
+            _digits[index1] = _digits[index2];
+            _digits[index2] = temp;
+        }
 
+        private static int FindIndexBeforeAndBiggerThan(int index)
+        {
             var result = -1;
-            var biggerDigit = 10;
-            for (int i = startFrom; i < digits.Length; i++)
+            var nextBiggerNumber = 10;
+            var compareNumber = _digits[index];
+            for (var i = index + 1; i < _digits.Length; i++)
             {
-                if (digits[i] > value && digits[i] < biggerDigit)
+                if (_digits[i] > compareNumber && _digits[i] < nextBiggerNumber)
                 {
+                    nextBiggerNumber = _digits[i];
                     result = i;
-                    biggerDigit = digits[i];
                 }
             }
             return result;
         }
 
-        private static void Swap(int[] digits, int index1, int index2)
+        private static int FindSwapIndex()
         {
-            int temp = digits[index1];
-            digits[index1] = digits[index2];
-            digits[index2] = temp;
+            for (var i = _digits.Length - 1; i >= 1; i--)
+            {
+                if (_digits[i - 1] < _digits[i])
+                    return i - 1;
+            }
+            return -1;
+        }
+
+        private static void ToDigitsArray(long number)
+        {
+            _digits = number.ToString().Select(x => Convert.ToInt32(x.ToString())).ToArray();
         }
     }
 }

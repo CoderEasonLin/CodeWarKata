@@ -45,6 +45,7 @@ public class MorseCodeDecoder
             {"---.. ", "8"},
             {"----. ", "9"},
             {"----- ", "0"},
+            {"  ", " "},
         };
         input += " ";
         foreach (var mapping in _morseCodeMapping)

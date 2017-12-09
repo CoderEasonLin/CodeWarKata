@@ -51,7 +51,7 @@ public class MorseCodeDecoder
             {"  ", " "},
         };
         
-        input = $"{input} ";
+        input = $"{input.Trim()} ";
         foreach (var mapping in _morseCodeMapping.OrderByDescending(pair => pair.Key))
         {
             input = input.Replace(mapping.Key, mapping.Value);

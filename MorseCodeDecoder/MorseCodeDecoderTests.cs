@@ -10,6 +10,7 @@ public class MorseCodeDecoderTests
     [TestCase(".-   -...   -.-.", "A B C")]
     [TestCase(".... . -.--   .--- ..- -.. .", "HEY JUDE")]
     [TestCase("...---...", "SOS")]
+    [TestCase(" . ", "E")]
     public void CorrectTest(string input, string expected)
     {
         Assert.AreEqual(expected, MorseCodeDecoder.Decode(input));

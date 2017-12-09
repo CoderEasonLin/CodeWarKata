@@ -12,6 +12,7 @@ public class MorseCodeDecoderTests
     [TestCase("...---...", "SOS")]
     [TestCase(" . ", "E")]
     [TestCase("   .   . ", "E E")]
+    [TestCase("      ...---... -.-.--   - .... .   --.- ..- .. -.-. -.-   -... .-. --- .-- -.   ..-. --- -..-   .--- ..- -- .--. ...   --- ...- . .-.   - .... .   .-.. .- --.. -.--   -.. --- --. .-.-.-  ", "SOS! THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.")]
     public void CorrectTest(string input, string expected)
     {
         Assert.AreEqual(expected, MorseCodeDecoder.Decode(input));

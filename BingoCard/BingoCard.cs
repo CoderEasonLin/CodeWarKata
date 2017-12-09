@@ -21,9 +21,7 @@ namespace BingoCard
             var random = new Random();
             var numbers = new HashSet<string>();
             while (numbers.Count < count)
-            {
                 numbers.Add($"{startWith}{random.Next(min, max)}");
-            }
             return numbers;
         }
     }

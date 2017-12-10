@@ -15,7 +15,7 @@ public class BraceValidator
         do
         {
             length = input.Length;
-            Braces.ForEach(brace => input = input.Replace(brace, ""));
+            Braces.ForEach(brace => input = input.Replace(brace, string.Empty));
         } while (length != input.Length);
 
         return length == 0;

@@ -11,12 +11,13 @@ public class BraceValidator
 
     public static bool Validate(string input)
     {
-        var length = -1;
-        while (length != input.Length)
+        int length;
+        do
         {
             length = input.Length;
             Braces.ForEach(brace => input = input.Replace(brace, ""));
-        }
+        } while (length != input.Length);
+
         return length == 0;
     }
 }

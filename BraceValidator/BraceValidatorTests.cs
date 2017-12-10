@@ -15,6 +15,7 @@ public class BraceValidatorTests
     }
 
     [TestCase("[}")]
+    [TestCase("[(])")]
     public void IncorrectTests(string input)
     {
         Assert.IsFalse(BraceValidator.Validate(input));

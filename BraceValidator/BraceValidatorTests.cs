@@ -13,4 +13,10 @@ public class BraceValidatorTests
     {
         Assert.IsTrue(BraceValidator.Validate(input));
     }
+
+    [TestCase("[}")]
+    public void IncorrectTests(string input)
+    {
+        Assert.IsFalse(BraceValidator.Validate(input));
+    }
 }
